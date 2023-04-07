@@ -1,6 +1,7 @@
 package com.example.pokemon.presentation.home
 
 import android.content.res.Configuration.ORIENTATION_PORTRAIT
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -15,6 +16,7 @@ import com.example.pokemon.presentation.home.components.PokemonCardItem
 import com.example.pokemon.presentation.util.Screens
 
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen(
     navController: NavController,

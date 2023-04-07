@@ -28,12 +28,11 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
                     val navController = rememberNavController()
                     NavHost(navController = navController,
-                        startDestination = Screens.HomeScreen.route) {
+                    startDestination = Screens.HomeScreen.route) {
                         composable(route = Screens.HomeScreen.route) {
                             HomeScreen(navController = navController)
                         }
-                        composable(route = Screens.DetailsScreen.route
-                        + "{pokemonId}",
+                        composable(route = Screens.DetailsScreen.route + "{pokemonId}",
                         arguments = listOf(navArgument("pokemonId") { type = NavType.IntType })) {
                             DetailsScreen(navController = navController)
                         }

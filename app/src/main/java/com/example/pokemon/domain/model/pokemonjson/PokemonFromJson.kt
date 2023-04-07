@@ -10,5 +10,5 @@ data class PokemonFromJson(
     var weight: Int = -1,
     var types: List<PokemonBaseType> = listOf(),
     var stats: List<PokemonBaseStat> = listOf(),
-    @SerializedName("sprites") var image: PokemonImage = PokemonImage()
+    @SerializedName("sprites") var image: PokemonBaseImage = PokemonBaseImage()
 )

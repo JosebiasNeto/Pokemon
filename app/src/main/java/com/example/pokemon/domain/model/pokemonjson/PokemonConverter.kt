@@ -18,7 +18,7 @@ object PokemonConverter {
             hpStat = getHpStatValue(pokemonFromJson.stats),
             attackStat = getAttackStatValue(pokemonFromJson.stats),
             defenseStat = getDefenseStatValue(pokemonFromJson.stats),
-            image = pokemonFromJson.image.image
+            image = pokemonFromJson.image.image.image.image
         )
     }
 
