@@ -5,22 +5,26 @@ import com.example.pokemon.domain.model.Pokemon
 import com.example.pokemon.domain.model.pokemonjson.PokemonBase
 import com.example.pokemon.domain.model.pokemonjson.PokemonConverter
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 
 class PokemonRepositoryImpl(private val pokemonAPI: PokemonAPI) : PokemonRepository {
 
     private var nextURL = ""
+    override var pokemons: List<Pokemon> = arrayListOf()
 
-    override suspend fun getPokemons(): List<Pokemon> {
+    override suspend fun getPokemons(): Flow<List<Pokemon>> = flow {
         val pokemonsBase = arrayListOf<PokemonBase>()
-        val pokemons = arrayListOf<Pokemon>()
+        val pokemonsFromAPI = arrayListOf<Pokemon>()
         withContext(Dispatchers.IO){
             pokemonsBase.addAll(getPokemonsBase())
         }
         withContext(Dispatchers.IO){
-            pokemonsBase.forEach { pokemons.add(getPokemonResult(it)) }
+            pokemonsBase.forEach { pokemonsFromAPI.add(getPokemonResult(it)) }
         }
-        return pokemons
+        pokemons = pokemonsFromAPI
+        emit(pokemonsFromAPI)
     }
 
     private suspend fun getPokemonsBase() : List<PokemonBase> {
@@ -30,6 +34,7 @@ class PokemonRepositoryImpl(private val pokemonAPI: PokemonAPI) : PokemonReposit
     }
 
     private suspend fun getPokemonResult(pokemonBase: PokemonBase) : Pokemon {
-        return PokemonConverter.fromJson(pokemonAPI.getPokemon(pokemonBase.url))
+        return PokemonConverter.fromJson(pokemonAPI.getPokemon(pokemonBase.url
+            .replace("https://pokeapi.co/api/v2/pokemon/", "")))
     }
 }

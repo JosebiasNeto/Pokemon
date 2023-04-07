@@ -1,4 +1,4 @@
-package com.example.pokemon.ui.theme
+package com.example.pokemon.presentation.util.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
