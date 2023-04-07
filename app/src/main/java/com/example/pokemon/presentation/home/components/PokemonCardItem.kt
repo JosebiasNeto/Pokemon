@@ -13,24 +13,18 @@ import coil.compose.AsyncImage
 import com.example.pokemon.domain.model.Pokemon
 
 @Composable
-fun PokemonCardItem(pokemon: Pokemon, isVertical: Boolean, onClick: () -> Unit, ) {
-    val modifier: Modifier = if(isVertical) {
-        Modifier
-            .fillMaxWidth()
-            .clickable(true, null, null, onClick)
-            .padding(30.dp)
-    } else {
-        Modifier
-            .fillMaxHeight()
-            .clickable(true, null, null, onClick)
-            .padding(10.dp)
-    }
-    Card(modifier = modifier) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            AsyncImage(model = pokemon.image, contentDescription = pokemon.name)
-            Spacer(modifier = Modifier.size(10.dp))
-            Text(pokemon.name, fontSize = 30.sp)
-            Spacer(modifier = Modifier.size(10.dp))
+fun PokemonCardItem(pokemon: Pokemon, size: Double, onClick: () -> Unit, ) {
+    Box(modifier = Modifier.fillMaxSize(),
+    contentAlignment = Alignment.Center) {
+        Card(modifier = Modifier.size(size.dp)
+            .clickable(true, null, null, onClick)) {
+
+            Column(horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceAround) {
+                AsyncImage(model = pokemon.image, contentDescription = pokemon.name,
+                    modifier = Modifier.size((size*0.85).dp))
+                Text(pokemon.name, fontSize = 25.sp)
+            }
         }
     }
 }
