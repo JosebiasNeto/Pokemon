@@ -1,6 +1,8 @@
 package com.example.pokemon.domain.model.pokemonjson
 
+import androidx.compose.ui.text.capitalize
 import com.example.pokemon.domain.model.Pokemon
+import com.example.pokemon.domain.util.capitalizeEveryFirstChar
 
 object PokemonConverter {
     fun toJson(pokemon: Pokemon) : PokemonFromJson {
@@ -10,7 +12,7 @@ object PokemonConverter {
     fun fromJson(pokemonFromJson: PokemonFromJson) : Pokemon {
         return Pokemon(
             id = pokemonFromJson.id,
-            name = pokemonFromJson.name,
+            name = pokemonFromJson.name.capitalizeEveryFirstChar(),
             experience = pokemonFromJson.experience,
             height = pokemonFromJson.height,
             weight = pokemonFromJson.weight,
