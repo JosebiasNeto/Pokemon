@@ -56,7 +56,7 @@ fun HomeScreen(
             }
         }
     } else {
-        Row(Modifier.background(MaterialTheme.colors.primary)) {
+        Box(Modifier.background(MaterialTheme.colors.primary)) {
             if(pokemons.isNotEmpty()) HorizontalPager(
                 pageCount = pokemons.size,
                 state = pagerState,
@@ -66,6 +66,14 @@ fun HomeScreen(
             ) {
                 PokemonCardItem(pokemons[it], minScreenSize) {
                     navController.navigate(Screens.DetailsScreen.route + pokemons[it].id)
+                }
+                if(it == pokemons.size -1 && !viewModel.isLoading.value) viewModel.getPokemons()
+            }
+            if(viewModel.isLoading.value){
+                Box(modifier = Modifier.fillMaxSize(),
+                    contentAlignment = if(pokemons.isEmpty()) Alignment.Center else Alignment.CenterEnd) {
+                    CircularProgressIndicator(strokeWidth = 5.dp, color = androidx.compose.ui.graphics.Color.Green,
+                        modifier = Modifier.padding(bottom = 20.dp))
                 }
             }
         }

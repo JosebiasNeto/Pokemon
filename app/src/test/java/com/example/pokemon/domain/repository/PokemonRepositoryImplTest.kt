@@ -14,9 +14,11 @@ class PokemonRepositoryImplTest {
     val mockkRule = MockKRule(this)
 
     @Test
-    fun getPokemons() = runBlocking {
+    fun getPokemons_success() = runBlocking {
         val repository = PokemonRepositoryImpl(RetrofitBuilder.pokemonAPI)
 
-        assert(repository.getPokemons()[0].name == "bulbasaur")
+        repository.getPokemons().collect {
+            assert(it[0].name == "Bulbasaur")
+        }
     }
 }
