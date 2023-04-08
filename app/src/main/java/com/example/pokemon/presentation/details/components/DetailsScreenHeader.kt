@@ -1,8 +1,6 @@
 package com.example.pokemon.presentation.details.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,11 +13,11 @@ import com.example.pokemon.domain.model.Pokemon
 @Composable
 fun DetailsScreenHeader(pokemon: Pokemon, size: Double) {
     Column(horizontalAlignment = Alignment.CenterHorizontally,
-    modifier = Modifier.size(size.dp)) {
-        AsyncImage(model = pokemon.image, contentDescription = pokemon.name)
+    modifier = Modifier.size((size*0.8).dp)) {
+        AsyncImage(model = pokemon.image, contentDescription = pokemon.name,
+        modifier = Modifier.size((size*0.6).dp))
         Spacer(modifier = Modifier.size(5.dp))
-        Text(pokemon.name, fontSize = 17.sp)
-        Spacer(modifier = Modifier.size(5.dp))
-        Text(pokemon.type, fontSize = 10.sp)
+        Text(pokemon.name)
+        Text(pokemon.type, fontSize = 20.sp)
     }
 }

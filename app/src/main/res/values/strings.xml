@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Pokemon</string>
     <string name="back">back</string>
+    <string name="experience">EXPERIENCE: </string>
+    <string name="weight">weight: </string>
+    <string name="height">height: </string>
+    <string name="hp">HP</string>
+    <string name="attack">ATTACK</string>
+    <string name="defense">DEFENSE</string>
+    <string name="favorite">FAVORITE</string>
+    <string name="unfavorite">UNFAVORITE</string>
 </resources>

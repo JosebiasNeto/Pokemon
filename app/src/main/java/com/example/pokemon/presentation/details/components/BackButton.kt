@@ -12,7 +12,7 @@ import com.example.pokemon.R
 
 @Composable
 fun BackButton(onClick: () -> Unit) {
-    IconButton(onClick = onClick, modifier = Modifier.padding(10.dp)) {
+    IconButton(onClick = onClick, modifier = Modifier.padding(start = 10.dp, top = 10.dp)) {
         Icon(painter = painterResource(id = R.drawable.baseline_arrow_back_24),
         contentDescription = stringResource(id = R.string.back))
     }
