@@ -18,16 +18,20 @@ class HomeViewModel @Inject constructor(
     private val _pokemons = mutableStateOf<List<Pokemon>>(emptyList())
     val pokemons: State<List<Pokemon>> = _pokemons
 
+    private val _isLoading = mutableStateOf(true)
+    val isLoading: State<Boolean> = _isLoading
+
     init {
         getPokemons()
     }
 
-    private fun getPokemons() {
+    fun getPokemons() {
         viewModelScope.launch {
+            _isLoading.value = true
             pokemonRepository.getPokemons().collect {
                 _pokemons.value = it
             }
+            _isLoading.value = false
         }
     }
-
 }
