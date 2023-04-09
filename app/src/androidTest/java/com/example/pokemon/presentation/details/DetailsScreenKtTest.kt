@@ -2,7 +2,7 @@ package com.example.pokemon.presentation.details
 
 import androidx.activity.compose.setContent
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.onAllNodesWithText
+import androidx.compose.ui.test.onNodeWithText
 import androidx.navigation.compose.rememberNavController
 import com.example.pokemon.presentation.MainActivity
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -37,10 +37,6 @@ class DetailsScreenKtTest {
 
     @Test
     fun detailsScreen_success() {
-        rule.waitUntil {
-            rule
-                .onAllNodesWithText("Bulbasaur")
-            viewModel.pokemon.value.id == 1
-        }
+        rule.onNodeWithText("Bulbasaur").assertExists()
     }
 }

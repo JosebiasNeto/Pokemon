@@ -16,6 +16,21 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="-1412578683">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="0025368967" value="120" />
+                  <entry key="Duration" value="90" />
+                  <entry key="Pixel_XL_API_31" value="120" />
+                  <entry key="Tests" value="360" />
+                  <entry key="motorola&#10; Moto G Play" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-893541106">
           <value>
             <AndroidTestResultsTableState>
@@ -36,9 +51,11 @@
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
+                  <entry key="0025368967" value="120" />
                   <entry key="Duration" value="90" />
                   <entry key="Pixel_XL_API_31" value="120" />
                   <entry key="Tests" value="360" />
+                  <entry key="motorola&#10; Moto G Play" value="120" />
                 </map>
               </option>
             </AndroidTestResultsTableState>

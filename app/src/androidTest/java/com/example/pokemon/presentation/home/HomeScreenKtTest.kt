@@ -37,10 +37,6 @@ class HomeScreenKtTest {
 
     @Test
     fun homeScreen_success() {
-        rule.waitUntil {
-            rule
-                .onNodeWithText("Bulbasaur")
-            viewModel.pokemons.value.isNotEmpty()
-        }
+        rule.onNodeWithText("Bulbasaur").assertExists()
     }
 }
