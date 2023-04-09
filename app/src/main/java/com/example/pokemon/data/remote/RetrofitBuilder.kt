@@ -11,5 +11,13 @@ object RetrofitBuilder {
             .build()
     }
 
+    fun getFavoriteRetrofit(): Retrofit {
+        return Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://webhook.site/")
+            .build()
+    }
+
     val pokemonAPI: PokemonAPI = getRetrofit().create(PokemonAPI::class.java)
+    val favoriteAPI: FavoriteAPI = getFavoriteRetrofit().create(FavoriteAPI::class.java)
 }

@@ -1,5 +1,6 @@
 package com.example.pokemon.presentation.details.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -13,7 +14,7 @@ import com.example.pokemon.R
 import com.example.pokemon.domain.model.Pokemon
 
 @Composable
-fun DetailsScreenDescription(size: Double, pokemon: Pokemon) {
+fun DetailsScreenDescription(size: Double, pokemon: Pokemon, favoriteClick: () -> Unit) {
     Column(modifier = Modifier.size(size.dp), horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.SpaceBetween) {
         Row { 
@@ -47,7 +48,7 @@ fun DetailsScreenDescription(size: Double, pokemon: Pokemon) {
                 Text(text = pokemon.defenseStat.toString())
             }
         }
-        Card {
+        Card( Modifier.clickable(true, null, null, favoriteClick) ) {
             Text(text = stringResource(id = R.string.favorite),
             modifier = Modifier.padding(horizontal = 30.dp, vertical = 7.dp), fontSize = 25.sp)
         }

@@ -1,5 +1,6 @@
 package com.example.pokemon.di
 
+import com.example.pokemon.data.remote.FavoriteAPI
 import com.example.pokemon.data.remote.PokemonAPI
 import com.example.pokemon.data.remote.RetrofitBuilder
 import com.example.pokemon.domain.repository.PokemonRepository
@@ -23,8 +24,15 @@ object PokemonModule {
     @Provides
     @Singleton
     fun providePokemonRepository(
-        api: PokemonAPI
+        api: PokemonAPI,
+        favoriteAPI: FavoriteAPI
     ) : PokemonRepository {
-        return PokemonRepositoryImpl(api)
+        return PokemonRepositoryImpl(api, favoriteAPI)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFavoriteAPI() : FavoriteAPI {
+        return RetrofitBuilder.favoriteAPI
     }
 }

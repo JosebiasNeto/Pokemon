@@ -1,5 +1,6 @@
 package com.example.pokemon.domain.repository
 
+import com.example.pokemon.data.remote.FavoriteAPI
 import com.example.pokemon.data.remote.PokemonAPI
 import com.example.pokemon.domain.model.Pokemon
 import com.example.pokemon.domain.model.pokemonjson.PokemonBase
@@ -10,7 +11,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 
-class PokemonRepositoryImpl(private val pokemonAPI: PokemonAPI) : PokemonRepository {
+class PokemonRepositoryImpl(
+    private val pokemonAPI: PokemonAPI,
+    private val favoriteAPI: FavoriteAPI
+    ) : PokemonRepository {
 
     private var index = 0
     override val pokemons: ArrayList<Pokemon> = arrayListOf()
@@ -37,5 +41,14 @@ class PokemonRepositoryImpl(private val pokemonAPI: PokemonAPI) : PokemonReposit
     private suspend fun getPokemonResult(pokemonBase: PokemonBase) : Pokemon {
         return PokemonConverter.fromJson(pokemonAPI.getPokemon(pokemonBase.url
             .replace(URL_USED, "")))
+    }
+
+    override suspend fun favoritePokemon(pokemon: Pokemon) : Boolean {
+        return try {
+            favoriteAPI.favoritePokemon(PokemonConverter.toJson(pokemon))
+            true
+        } catch (e: java.lang.Exception) {
+            false
+        }
     }
 }
